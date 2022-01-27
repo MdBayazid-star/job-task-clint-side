@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Carattere&family=Lobster+Two:ital,wght@1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap");
+div {
+  font-family: "Anton", sans-serif;
+}
+.text-color-update {
+  color: #6c6c6c;
+}
+.text-color-update-2 {
+  color: #e76f51;
+}
+.text-color-update-3 {
+  color: #e0e0e0;
+}

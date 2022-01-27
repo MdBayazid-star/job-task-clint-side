@@ -1,0 +1,73 @@
+/* element.style {
+  position: relative;
+  left: -351.5px;
+  box-sizing: border-box;
+  width: 1903px;
+  padding-left: 351.5px;
+  padding-right: 351.5px;
+}
+.vc_row[data-vc-full-width] {
+  -webkit-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+}
+.vc_row[data-vc-full-width] {
+  overflow: inherit !important;
+}
+.vc_custom_1587959007516 {
+  background-image: url(https://shinetheme.com/travelerdata/solotour/wp-content/uploads/2020/04/home_never_be_alone_bg-1.png?id=8495) !important;
+}
+.vc_row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.st-solo-about-us {
+  padding: 100px 0px 104px 0px;
+  background-size: cover;
+  background-position: center top !important;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.st-solo-about-us .st-about-us-left .wpb_content_element h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 0px !important;
+  font-size: 36px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 36px;
+  letter-spacing: -0.96px;
+  color: var(--main-color, #123a32);
+  position: relative;
+  display: inline-block;
+}
+.st-solo-about-us .st-about-us-left .wpb_content_element h3:after {
+  content: url(https://shinetheme.com/travelerdata/solotour/wp-content/themes/traveler/v2/images/Vector.svg);
+  position: absolute;
+  left: 0px;
+  bottom: -40px;
+}
+
+.st-solo-about-us .st-about-us-right {
+  padding-left: 115px;
+}
+.vc_column-inner::after,
+.vc_column-inner::before {
+  content: " ";
+  display: table;
+}
+.st-solo-about-us .st-about-us-right .wpb_content_element:first-child {
+  margin-bottom: 40px !important;
+}
+.st-solo-about-us .st-about-us-right .wpb_content_element {
+  margin-bottom: 0px !important;
+}
+.st-solo-about-us .st-about-us-right .wpb_content_element {
+  margin-bottom: 0px !important;
+} */

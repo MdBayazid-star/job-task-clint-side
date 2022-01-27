@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Carattere&family=Lobster+Two:ital,wght@1,700&display=swap");
+.logo {
+  font-family: "Lobster Two", cursive !important;
+  font-weight: 700;
+}
+.userImg {
+  border: 2px solid #ff7c5b;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+@media only screen and (max-width: 992px) {
+  #user {
+    margin-left: 0 !important;
+    margin-bottom: 15px !important;
+  }
+}

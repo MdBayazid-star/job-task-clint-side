@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Carattere&family=Lobster+Two:ital,wght@1,700&display=swap");
+
+.logo {
+  font-family: "Lobster Two", cursive !important;
+}
+.slogan {
+  font-family: "Yanone Kaffeesatz", sans-serif;
+}
+#show {
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  color: #ffffff;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+#show::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: -1;
+}
+.imgIcon {
+  font-size: 50px;
+  color: #fff;
+}
+.bgBlue {
+  background: #4a79f1;
+  box-shadow: 0 5px 20px #4a79f1;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.detail-footer {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+}
