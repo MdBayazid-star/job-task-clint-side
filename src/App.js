@@ -15,7 +15,7 @@ import ManageProducts from "./Components/Pages/Dashboard/ManageProducts/ManagePr
 import ManageRequestedBlogs from "./Components/Pages/Dashboard/ManageRequestedBlogs/ManageRequestedBlogs";
 import NotFound from "./Components/Pages/NotFound/NotFound";
 import Details from "./Components/Pages/Details/Details";
-
+import "./App.css"
 function App() {
   return (
     <AuthProvider>
@@ -27,7 +27,6 @@ function App() {
           <Route path="/addABlog" element={<AddABlog />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/detail" element={<Details />} />
           <Route
             path="/details/:blogId"
             element={
@@ -46,8 +45,7 @@ function App() {
             }
           >
             <Route path="addABlog" element={<AddABlog />} />
-            <Route path="myOrders" element={<MyOrders />} />
-            <Route path="review" element={<Review />} />
+            <Route path="myBlogs" element={<MyOrders />} />
           </Route>
           <Route
             path="/dashboard"
@@ -63,7 +61,7 @@ function App() {
               element={<ManageRequestedBlogs />}
             />
             <Route path="manageProducts" element={<ManageProducts />} />
-            <Route path="addABlog" element={<AddABlog />} />
+            <Route path="manageBlogs" element={<ManageProducts />} />
           </Route>
           <Route path="*" element={<NotFound />} />
           {/* <Route

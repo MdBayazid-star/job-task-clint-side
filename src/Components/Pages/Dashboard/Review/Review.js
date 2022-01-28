@@ -27,7 +27,7 @@ const Review = () => {
           : "https://christopherscottedwards.com/wp-content/uploads/2018/07/Generic-Profile.jpg"
       }`,
     };
-    fetch("https://pure-refuge-78290.herokuapp.com/reviews", {
+    fetch("https://floating-plateau-21173.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

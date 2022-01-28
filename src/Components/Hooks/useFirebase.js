@@ -10,6 +10,13 @@ import {
   signInWithEmailAndPassword,
   signOut,
   getIdToken,
+  sendSignInLinkToEmail,
+  EmailAuthProvider,
+  linkWithCredential,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+  reauthenticateWithCredential,
+  fetchSignInMethodsForEmail
 } from "firebase/auth";
 
 // initialize firebase app
@@ -43,7 +50,63 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  // Register user with Email Password
+  // Email authorization
+
+//   const actionCodeSettings = {
+//     url: '{https://www.example.com/finishSignUp?cartId=1234}',
+//     handleCodeInApp: true,
+//     iOS: {
+//       bundleId: 'com.example.ios'
+//     },
+//     android: {
+//       packageName: 'com.example.android',
+//       installApp: true,
+//       minimumVersion: '12'
+//     },
+//     dynamicLinkDomain: 'example.page.link'
+//   };
+
+//   sendSignInLinkToEmail(auth, user.email, actionCodeSettings)
+//   .then(() => {
+//     window.localStorage.setItem('emailForSignIn', user.email);
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//   });
+
+// if (isSignInWithEmailLink(auth, window.location.href)) {
+//   let email = window.localStorage.getItem('emailForSignIn');
+//   if (!email) {
+//     email = window.prompt('Please provide your email for confirmation');
+//   }
+//   signInWithEmailLink(auth, email, window.location.href)
+//     .then((result) => {
+//       window.localStorage.removeItem('emailForSignIn');
+//     })
+//     .catch((error) => {
+//     });
+// }
+// const credential = EmailAuthProvider.credentialWithLink(
+//   user.email, window.location.href);
+// reauthenticateWithCredential(auth.currentUser, credential)
+//   .then((usercred) => {
+//   })
+//   .catch((error) => {
+//   });
+//   // After asking the user for their email.
+// const email = window.prompt('Please provide your email');
+// fetchSignInMethodsForEmail(auth, email)
+//   .then((signInMethods) => {
+//     if (signInMethods.indexOf(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) != -1) {
+//     }
+//     if (signInMethods.indexOf(EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD) != -1) {
+//     }
+//   })
+//   .catch((error) => {
+//   });
+  // hgug
+
   const registerUser = (email, password, name, history) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
@@ -70,7 +133,7 @@ const useFirebase = () => {
   // Save User Information
   const userData = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://arcane-oasis-37685.herokuapp.com/users", {
+    fetch("https://floating-plateau-21173.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -125,7 +188,7 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
-    fetch(`https://arcane-oasis-37685.herokuapp.com/users/${user.email}`)
+    fetch(`https://floating-plateau-21173.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);

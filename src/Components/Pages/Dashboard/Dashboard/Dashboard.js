@@ -22,7 +22,6 @@ import ManageProducts from "../ManageProducts/ManageProducts";
 import Pay from "../Pay/Pay";
 import Review from "../Review/Review";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
-// import ManageRequestedBlogs from "../ManageRequestedBlogs/ManageRequestedBlogs";
 import useAuth from "../../../Hooks/useAuth";
 import ManageRequestedBlogs from "../ManageRequestedBlogs/ManageRequestedBlogs";
 import AddABlog from "../AddABlog/AddABlog";
@@ -60,12 +59,12 @@ function ResponsiveDrawer(props) {
           <Link
             className="fw-bold"
             style={{ textDecoration: "none", color: "#f15245" }}
-            to="/dashboard/manageProducts"
+            to="/dashboard/manageBlogs"
           >
             <ListItem button>
               <ListItemText>
                 <span className="fw-bold">
-                  <i className="fas fa-tasks"></i> Manage Services
+                  <i className="fas fa-tasks"></i> Manage Blogs
                 </span>
               </ListItemText>
             </ListItem>
@@ -104,8 +103,7 @@ function ResponsiveDrawer(props) {
             <ListItem button>
               <ListItemText>
                 <span className="fw-bold">
-                  <i className="fas fa-shopping-basket"></i> Manage Requested
-                  Blogs
+                  <i className="fas fa-shopping-basket"></i> Requested Blogs
                 </span>
               </ListItemText>
             </ListItem>
@@ -130,12 +128,12 @@ function ResponsiveDrawer(props) {
           <Link
             className="fw-bold"
             style={{ textDecoration: "none", color: "#f15245" }}
-            to="/dashboard/myOrders"
+            to="/dashboard/addABlog"
           >
             <ListItem button>
               <ListItemText>
                 <span className="fw-bold">
-                  <i className="fas fa-shopping-cart"></i> My Orders
+                  <i className="fas fa-cart-plus"></i> Add A Blog
                 </span>
               </ListItemText>
             </ListItem>
@@ -143,25 +141,12 @@ function ResponsiveDrawer(props) {
           <Link
             className="fw-bold"
             style={{ textDecoration: "none", color: "#f15245" }}
-            to="/dashboard/pay"
+            to="/dashboard/myBlogs"
           >
             <ListItem button>
               <ListItemText>
                 <span className="fw-bold">
-                  <i className="fas fa-money-check-alt"></i> Pay
-                </span>
-              </ListItemText>
-            </ListItem>
-          </Link>
-          <Link
-            className="fw-bold"
-            style={{ textDecoration: "none", color: "#f15245" }}
-            to="/dashboard/review"
-          >
-            <ListItem button>
-              <ListItemText>
-                <span className="fw-bold">
-                  <i className="far fa-comment-dots"></i> Review
+                  <i className="fas fa-shopping-cart"></i> My Blogs
                 </span>
               </ListItemText>
             </ListItem>
@@ -265,15 +250,13 @@ function ResponsiveDrawer(props) {
         <Routes>
           {admin && <Route exact path="" element={<ManageProducts />} />}
           {!admin && <Route exact path="" element={<MyOrders />} />}
-          <Route path="myOrders" element={<MyOrders />} />
-          <Route path="pay" element={<Pay />} />
-          <Route path="review" element={<Review />} />
+          <Route path="myBlogs" element={<MyOrders />} />
           <Route path="makeAdmin" element={<MakeAdmin />} />
           <Route
             path="manageRequestedBlogs"
             element={<ManageRequestedBlogs />}
           />
-          <Route path="manageProducts" element={<ManageProducts />} />
+          <Route path="manageBlogs" element={<ManageProducts />} />
           <Route path="addABlog" element={<AddABlog />} />
         </Routes>
       </Box>

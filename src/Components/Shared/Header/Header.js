@@ -97,9 +97,6 @@ export default function Header() {
           <Toolbar className="container">
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <NavLink className="navbar-brand tw-bold logo" to="/home">
-                <span className="text-danger">o</span>
-                <span className="text-warning">n</span>
-                <span className="text-info">s</span>
                 <span className="text-success">Travel</span>
               </NavLink>
             </Typography>

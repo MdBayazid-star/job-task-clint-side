@@ -22,10 +22,9 @@ const Details = () => {
   const [approveBtn, setApproveBtn] = useState(false);
   const [bookingData, setBookingData] = useState({});
   const photo = user?.photoURL;
-  console.log(photo);
 
   useEffect(() => {
-    fetch("https://pure-refuge-78290.herokuapp.com/blogs")
+    fetch("https://floating-plateau-21173.herokuapp.com/blogs")
       .then((res) => res.json())
       .then((data) => setData(data.result))
       .catch();
@@ -77,7 +76,7 @@ const Details = () => {
                     className="d-block w-100 d-flex flex-column justify-content-center align-items-center text-center"
                     style={{
                       minHeight: "70vh",
-                      background: `linear-gradient(#00000000, #00000094), url(${itemDetail[0].image1}) no-repeat center center / cover`,
+                      background: `linear-gradient(#00000000, #00000094), url(${itemDetail[0].img1}) no-repeat center center / cover`,
                     }}
                   ></div>
                 </div>
@@ -86,7 +85,7 @@ const Details = () => {
                     className="d-block w-100 d-flex flex-column justify-content-center align-items-center text-center"
                     style={{
                       minHeight: "70vh",
-                      background: `linear-gradient(#00000000, #00000094), url(${itemDetail[0].image2}) no-repeat center center / cover`,
+                      background: `linear-gradient(#00000000, #00000094), url(${itemDetail[0].img2}) no-repeat center center / cover`,
                     }}
                   ></div>
                 </div>
@@ -95,7 +94,7 @@ const Details = () => {
                     className="d-block w-100 d-flex flex-column justify-content-center align-items-center text-center"
                     style={{
                       minHeight: "70vh",
-                      background: `linear-gradient(#00000000, #00000094), url(${itemDetail[0].image3}) no-repeat center center / cover`,
+                      background: `linear-gradient(#00000000, #00000094), url(${itemDetail[0].img3}) no-repeat center center / cover`,
                     }}
                   ></div>
                 </div>
@@ -160,13 +159,13 @@ const Details = () => {
                     style={{ fontFamily: `"Yanone Kaffeesatz", sans-serif` }}
                     className="fs-2"
                   >
-                    Name: {user.displayName}
+                    {user.displayName}
                   </h1>
                   <h1
                     style={{ fontFamily: `"Yanone Kaffeesatz", sans-serif` }}
                     className="fs-5"
                   >
-                    Email: {user.email}
+                    {user.email}
                   </h1>
                 </div>
               </div>
@@ -186,7 +185,7 @@ const Details = () => {
                     <h5 className="card-text fs-5">Office : +(423) 4805-567</h5>
                     <br />
                     <h5 className="card-text fs-5">
-                      E-mail : onsTravel@yahoo.com
+                      E-mail : Travel@yahoo.com
                     </h5>
                     <br />
                     <h5 className="fs-5">

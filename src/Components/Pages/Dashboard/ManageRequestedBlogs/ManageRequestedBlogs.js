@@ -1,26 +1,22 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 import "./ManageRequestedBlogs.css";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function ManageRequestedBlogs() {
-  const [userOrders, setUserOrders] = React.useState([]);
+  // const [userOrders, setUserOrders] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    fetch("https://pure-refuge-78290.herokuapp.com/allBooking")
+    fetch("https://floating-plateau-21173.herokuapp.com/requestedBlogs")
       .then((res) => res.json())
-      .then((data) => setUserOrders(data))
-      .then(() => setIsLoading(false));
+      .then((data) => setData(data))
+      .then(() => setIsLoading(false))
+      .catch();
   }, []);
+
   const handleUpdateUser = (id) => {
-    const url = `https://pure-refuge-78290.herokuapp.com/booking/${id}`;
+    const url = `https://floating-plateau-21173.herokuapp.com/blogs/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -33,30 +29,31 @@ export default function ManageRequestedBlogs() {
           alert("Update Successful");
         }
         console.log(data);
-        fetch("https://pure-refuge-78290.herokuapp.com/allBooking")
+        fetch("https://floating-plateau-21173.herokuapp.com/requestedBlogs")
           .then((res) => res.json())
-          .then((data) => setUserOrders(data));
+          .then((data) => setData(data));
       });
   };
   const handleDeleteUserService = (id) => {
     const proceed = window.confirm("Are you sure, you want to delete?", id);
     if (proceed) {
-      const url = `https://pure-refuge-78290.herokuapp.com/booking/${id}`;
+      const url = `https://floating-plateau-21173.herokuapp.com/blogs/${id}`;
       fetch(url, {
         method: "DELETE",
       })
         .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
+        .then((remainingData) => {
+          if (remainingData.deletedCount > 0) {
             alert("Deleted successfully");
-            const remainingUsers = userOrders.filter(
+            const remainingUsers = data.filter(
               (userService) => userService._id !== id
             );
-            setUserOrders(remainingUsers);
+            setData(remainingUsers);
           }
         });
     }
   };
+  // let userOrders = data.filter((td) => td.condition === "pending");
 
   return (
     <div>
@@ -68,7 +65,7 @@ export default function ManageRequestedBlogs() {
       )}
       {!isLoading && (
         <div>
-          {userOrders.map((userOrder) => (
+          {data.map((userOrder) => (
             <div
               key={userOrder._id}
               className="card mb-3 border-0 shadow"
@@ -91,14 +88,12 @@ export default function ManageRequestedBlogs() {
                       <h6>Place: ${userOrder.product_Detail?.price}</h6>
                       <div className="mt-2">
                         <div className="mb-2">
-                          <Link
-                            to="/dashboard/review"
-                            className="w-50 text-center my-2 link"
+                          <button
+                            className="btn btn-outline-warning"
+                            onClick={() => handleUpdateUser(userOrder._id)}
                           >
-                            <button className="btn btn-outline-warning">
-                              Approve
-                            </button>
-                          </Link>
+                            Approve
+                          </button>
                         </div>
                         <div>
                           <Link

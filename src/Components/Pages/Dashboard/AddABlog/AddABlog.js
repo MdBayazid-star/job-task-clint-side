@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import {
+  Alert,
   Button,
   CircularProgress,
   Container,
@@ -49,7 +50,7 @@ const AddABlog = () => {
         photo: photo,
       };
     }
-    fetch("https://pure-refuge-78290.herokuapp.com/blogs", {
+    fetch("https://floating-plateau-21173.herokuapp.com/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -112,7 +113,7 @@ const AddABlog = () => {
           sx={{ width: "95%", m: 1 }}
           id="outlined-basic"
           label="Image 1"
-          name="image1"
+          name="img1"
           onBlur={handleOnBlur}
           variant="outlined"
         />
@@ -129,7 +130,7 @@ const AddABlog = () => {
           sx={{ width: "95%", m: 1 }}
           id="outlined-basic"
           label="Image 2"
-          name="image2"
+          name="img2"
           onBlur={handleOnBlur}
           variant="outlined"
         />
@@ -146,7 +147,7 @@ const AddABlog = () => {
           sx={{ width: "95%", m: 1 }}
           id="outlined-basic"
           label="Image 3"
-          name="image3"
+          name="img3"
           onBlur={handleOnBlur}
           variant="outlined"
         />

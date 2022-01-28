@@ -16,9 +16,6 @@ const Footer = () => {
                     href="/"
                   >
                     <h1 className="logo fs-1">
-                      <span className="text-danger">o</span>
-                      <span className="text-warning">n</span>
-                      <span className="text-info">s</span>
                       <span className="text-success">Travel</span>
                     </h1>
                   </a>
@@ -120,12 +117,9 @@ const Footer = () => {
           <p className="text-center mt-5">
             © 2022{" "}
             <span className="c-green">
-              <span className="text-danger">o</span>
-              <span className="text-warning">n</span>
-              <span className="text-info">s</span>
               <span className="text-success">Travel</span>
             </span>{" "}
-            Designd By <span className="c-green"> Shihab</span>.
+            Designd By <span className="c-green"> MD BAYAZID</span>.
           </p>
         </div>
       </div>

@@ -23,9 +23,6 @@ const Banner = () => {
             >
               <div style={{ maxWidth: "650px" }}>
                 <h1 className="logoHeading">
-                  <span className="text-danger">o</span>
-                  <span className="text-warning">n</span>
-                  <span className="text-info">s</span>
                   <span className="text-success">Travel</span>
                 </h1>
                 <h2 className="text-light heading">
@@ -56,9 +53,6 @@ const Banner = () => {
             >
               <div style={{ maxWidth: "650px" }}>
                 <h1 className="logoHeading">
-                  <span className="text-danger">o</span>
-                  <span className="text-warning">n</span>
-                  <span className="text-info">s</span>
                   <span className="text-success">Travel</span>
                 </h1>
                 <h2 className="text-light heading">
@@ -89,9 +83,6 @@ const Banner = () => {
             >
               <div style={{ maxWidth: "650px" }}>
                 <h1 className="logoHeading">
-                  <span className="text-danger">o</span>
-                  <span className="text-warning">n</span>
-                  <span className="text-info">s</span>
                   <span className="text-success">Travel</span>
                 </h1>
                 <h2 className="text-light heading">

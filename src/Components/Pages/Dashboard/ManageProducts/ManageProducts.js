@@ -1,69 +1,47 @@
 import { CircularProgress, Rating } from "@mui/material";
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ManageProducts.css";
 import StarIcon from "@mui/icons-material/AccessAlarm";
-// import { useDispatch, useSelector } from "react-redux";
-// import axios from "axios";
-// import useAuth from "../../../Hooks/useAuth";
+import useAuth from "../../../Hooks/useAuth";
 
 const ManageProducts = () => {
-  // const { receivePageNum, pageCount } = useAuth();
+  const { receivePageNum, pageCount } = useAuth();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   fetch("https://pure-refuge-78290.herokuapp.com/services")
-  //     .then((res) => res.json())
-  //     .then((data) => receivePageNum(Math.ceil(data.count / 8)));
-  // }, []);
-  // const [page, setPage] = useState(0);
-  // const getCount = pageCount;
-  // console.log("total page are", getCount);
-
-  // const [products, setProducts] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const size = 8;
-  // // const product = useSelector((state) => state);
-  // const dispatch = useDispatch();
-  // const fetchProducts = async () => {
-  //   const response = await axios
-  //     .get(
-  //       `https://pure-refuge-78290.herokuapp.com/services?page=${page}&&size=${size}`
-  //     )
-  //     .catch((err) => {
-  //       console.log("error", err);
-  //     });
-  //   setIsLoading(false);
-  //   dispatch(setProducts(response.data.result));
-  // };
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, [page, !products]);
-  // const handleDeleteProduct = (id) => {
-  //   const proceed = window.confirm("Are you sure, you want to delete?", id);
-  //   console.log(id);
-  //   if (proceed) {
-  //     const url = `https://pure-refuge-78290.herokuapp.com/services/${id}`;
-  //     fetch(url, {
-  //       method: "DELETE",
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.deletedCount > 0) {
-  //           console.log(id);
-  //           alert("Deleted Successfully!");
-  //           const remainingProducts = products.filter(
-  //             (product) => product._id !== id
-  //           );
-  //           setProducts(remainingProducts);
-  //         }
-  //       });
-  //   }
-  // };
+  useEffect(() => {
+    fetch("https://floating-plateau-21173.herokuapp.com/blogs")
+      .then((res) => res.json())
+      .then((data) => setProducts(data.result))
+      .then(() => setIsLoading(false));
+  }, []);
+  console.log(products);
+  const handleDeleteProduct = (id) => {
+    const proceed = window.confirm("Are you sure, you want to delete?", id);
+    console.log(id);
+    if (proceed) {
+      const url = `https://floating-plateau-21173.herokuapp.com/blogs/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            console.log(id);
+            alert("Deleted Successfully!");
+            const remainingProducts = products.filter(
+              (product) => product._id !== id
+            );
+            setProducts(remainingProducts);
+          }
+        });
+    }
+  };
 
   return (
     <div className="container">
-      <h1>Manage Product</h1>
-      {/* <h1 className="heading text-primary">MANAGE PRODUCTS</h1>
+      <h1 className="heading text-primary">MANAGE BLOGS</h1>
       {isLoading && (
         <div className="d-flex align-items-center my-5 py-5">
           <CircularProgress className="mx-auto" />
@@ -84,16 +62,14 @@ const ManageProducts = () => {
                   </div>
                   <div className="card-body border-top">
                     <h5 className="card-title fw-bold">
-                      {singleProduct.name?.slice(0, 50)}
+                      {singleProduct.title}
                     </h5>
-                    <h6 className="card-title">
-                      {singleProduct.title?.slice(0, 50)}
-                    </h6>
-                    <h5>${singleProduct.price}</h5>
+                    <h6 className="card-title">{singleProduct.place}</h6>
+                    <h5>{singleProduct.cost}</h5>
                     <Rating
                       style={{ fontSize: "15px" }}
                       name="half-rating-read"
-                      value={singleProduct.rate}
+                      value={`${singleProduct.rating}`}
                       precision={0.5}
                       readOnly
                     />
@@ -103,7 +79,7 @@ const ManageProducts = () => {
                     style={{ backgroundColor: "#dbe3e3" }}
                   >
                     <Link
-                      to={`/services/${singleProduct._id}`}
+                      to={`/details/${singleProduct._id}`}
                       className="w-50 text-center my-2 link"
                     >
                       <button className="btn btn-outline-success">
@@ -124,19 +100,6 @@ const ManageProducts = () => {
           ))}
         </div>
       )}
-      <div className="services-button text-center mt-30">
-        {[...Array(getCount)?.keys()].map((number) => (
-          <button
-            className="c-btn"
-            className={number === page ? "selected" : "c-btn"}
-            key={number}
-            onClick={() => setPage(number)}
-          >
-            {number}
-            {console.log(number)}
-          </button>
-        ))}
-      </div> */}
     </div>
   );
 };

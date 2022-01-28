@@ -7,7 +7,7 @@ const MyOrders = () => {
   const [userOrders, setUserOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    const url = `https://pure-refuge-78290.herokuapp.com/booking?email=${user.email}`;
+    const url = `https://floating-plateau-21173.herokuapp.com/myBlog?email=${user.email}`;
     fetch(url, {
       headers: {
         authorization: `Bearer ${token}`,
@@ -17,11 +17,12 @@ const MyOrders = () => {
       .then((data) => setUserOrders(data))
       .then(() => setIsLoading(false));
   }, [user.email, token]);
+  console.log(userOrders);
 
   const handleDeleteUserService = (id) => {
     const proceed = window.confirm("Are you sure, you want to delete?", id);
     if (proceed) {
-      const url = `https://pure-refuge-78290.herokuapp.com/booking/${id}`;
+      const url = `https://floating-plateau-21173.herokuapp.com/blogs/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -39,7 +40,7 @@ const MyOrders = () => {
   };
   return (
     <div>
-      <h1 className="heading text-success">MY ORDERS</h1>
+      <h1 className="heading text-success">MY BLOGS</h1>
       {isLoading && (
         <div className="d-flex align-items-center my-5 py-5">
           <CircularProgress className="mx-auto" />
@@ -48,14 +49,16 @@ const MyOrders = () => {
       {!isLoading && !userOrders[0] && (
         <div className="my-5">
           <h3 className="text-info fw-bold">
-            You haven't ordered anything yet.
+            You haven't posted any blog yet.
           </h3>
           <h4 className="text-warning fw-bold">Thank you for visiting us.</h4>
         </div>
       )}
       {userOrders[0] && (
         <div>
-          <h2 className="text-secondary">Orders: {userOrders.length}</h2>
+          <h2 className="text-secondary my-3">
+            Number of blog: {userOrders.length}
+          </h2>
           {userOrders.map((userOrder) => (
             <div
               key={userOrder._id}
@@ -65,17 +68,17 @@ const MyOrders = () => {
               <div className="row g-0">
                 <div className="col-md-4 d-flex align-items-center">
                   <img
-                    src={userOrder.product_Detail?.img1}
+                    src={userOrder.img1}
                     className="img-fluid p-2"
                     alt="..."
                   />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title fw-bold">
-                      {userOrder.product_Detail?.name?.slice(0, 50)} ...
+                    <h5 className="card-title fw-bold fs-4">
+                      {userOrder.title}
                     </h5>
-                    <h6>PRICE: ${userOrder.product_Detail?.price}</h6>
+                    <h6 className="fs-6 mb-2">{userOrder.place}</h6>
                     <p
                       className="border border-warning rounded-pill d-inline p-1"
                       style={{ backgroundColor: "#dbe3e3" }}
@@ -85,19 +88,9 @@ const MyOrders = () => {
                       </small>
                     </p>
                     <div className="mt-2">
-                      <div className="mb-2">
-                        <Link
-                          to="/dashboard/review"
-                          className="w-50 text-center my-2 link"
-                        >
-                          <button className="btn btn-outline-warning">
-                            <i className="far fa-comment"></i> Give Feedback
-                          </button>
-                        </Link>
-                      </div>
                       <div>
                         <Link
-                          to={`/services/${userOrder.product_Detail?._id}`}
+                          to={`/details/${userOrder._id}`}
                           className="w-50 text-center my-2 link me-2"
                         >
                           <button className="btn btn-outline-info">
